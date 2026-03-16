@@ -10,7 +10,16 @@ async function req(path, option = {}){
 
 }
 
-const getAllLauncher = () => req('/api/launchers')
+const getAllLauncher = (params = {}) => { 
+const q = new URLSearchParams()
+if (params.city) q.set('city', params.city)
+if (params.rocketType) q.set('rocketType', params.rocketType)
+const query = q.toString()
+if (query) return req('/api/launchers?' + query)
+return req('/api/launchers')
+
+}
+
 const getLauncher = (id) => req(`/api/launchers/${id}`)
 
 const createLauncher = (objLauncher) => req('/api/launchers', {method: "POST", body: JSON.stringify(objLauncher)})
