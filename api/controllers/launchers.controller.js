@@ -1,4 +1,4 @@
-import * as launchersService from '../services/launchers.service'
+import * as launchersService from '../services/launchers.service.js'
 
 
 async function getAllLauncher(req, res, next) {
