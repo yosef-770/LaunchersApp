@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import style from './LauncherForm.module.css'
+import style from '../comps/LauncherForm.module.css'
 
 const ROCKET_TYPE = ['Shahab3', 'Fetah110', 'Radwan', 'Kheibar']
 
@@ -75,7 +75,7 @@ export default function LauncherForm({values, onSubmit, submitType}){
             longitude
             <input
             type="number"
-            value={latitude}
+            value={longitude}
             onChange={(e)=> setLongitude(e.target.value)}
             className={style.input}
             />
