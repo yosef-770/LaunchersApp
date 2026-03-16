@@ -1,4 +1,4 @@
-import Launcher from "../models/launchers.model";
+import Launcher from "../models/launchers.model.js";
 
 async function getAllLauncher() {
     return Launcher.find().lean()
@@ -11,13 +11,14 @@ async function getLauncherByID(id) {
 
 
 async function craeteLauncher(objLauncher) {
-    const launcher = await Launcher.create(obj)
+    const launcher = await Launcher.create(objLauncher)
     return launcher.toObject()
 }
 
 async function updateLauncher(id, objLauncher) {
     const launcher = await Launcher.findByIdAndUpdate(id,
-        {$set: objLauncher}
+        {$set: objLauncher},
+        {new: true}
     ).lean()
 
     return launcher;
