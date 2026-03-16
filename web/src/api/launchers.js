@@ -10,7 +10,7 @@ async function req(path, option = {}){
 
 }
 
-const getAllLauncher = (params = {}) => { 
+const getAllLaunchers = (params = {}) => { 
 const q = new URLSearchParams()
 if (params.city) q.set('city', params.city)
 if (params.rocketType) q.set('rocketType', params.rocketType)
@@ -28,4 +28,4 @@ const updateLauncher = (id, objLauncher) => req(`/api/launchers/${id}`, {method:
 
 const deleteLauncher = (id) => req(`/api/launchers/${id}`, {method: "DELETE"})
 
-export {getAllLauncher, getLauncher, createLauncher, updateLauncher, deleteLauncher }
+export {getAllLaunchers, getLauncher, createLauncher, updateLauncher, deleteLauncher }
