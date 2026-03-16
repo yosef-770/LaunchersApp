@@ -25,7 +25,7 @@ export default function LauncherForm({values, onSubmit, submitType}){
 
  return (
     <div className={style.card}>
-        <from onSubmit={handleSubmit} className={style.form}>
+        <form onSubmit={handleSubmit} className={style.form}>
         <label>
             Name
             <input
@@ -49,12 +49,13 @@ export default function LauncherForm({values, onSubmit, submitType}){
 
                 <label>
             Rocket type
-            <select>
-            value={name}
+            <select
+            value={rocketType}
             onChange={(e)=> setRocketType(e.target.value)}
             className={style.input}
+            >
                 {ROCKET_TYPE.map((type) => (
-                    <option key={type} value={type}></option>
+                    <option key={type} value={type}>{type}</option>
                 ))}
             </select>
         </label>
@@ -80,9 +81,10 @@ export default function LauncherForm({values, onSubmit, submitType}){
             className={style.input}
             />
         </label>
-        </from>
 
-        <button type="submit" className={style.button}>{submitType}</button>
+        <button type="submit" className={style.btn}>{submitType}</button>
+        </form>
+
     </div>
  )
 
