@@ -3,7 +3,8 @@ import * as launchersService from '../services/launchers.service.js'
 
 async function getAllLauncher(req, res, next) {
     try {
-        const launchers = await launchersService.getAllLauncher()
+        const {city, rocketType} = req.query
+        const launchers = await launchersService.getAllLauncher({city, rocketType})
         res.json(launchers)
     } catch (err) {
         next(err)
