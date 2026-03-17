@@ -36,7 +36,7 @@ export function adminPermission (req, res, next){
 
 export function writePermission (req, res, next){
     const user_type = req.user.user_type;
-    if (user_type !== 'admin' || user_type !== 'Intelligence') {
+    if (user_type !== 'admin' && user_type !== 'Intelligence') {
     return res.status(403).json({ message: 'Access denied: write permission required' })
     }
     next()
@@ -44,7 +44,7 @@ export function writePermission (req, res, next){
 
 export function destroyedPermission (req, res, next){
     const user_type = req.user.user_type;
-    if (user_type !== 'admin' || user_type !== 'Intelligence' || user_type !== 'airForce' ) {
+    if (user_type !== 'admin' && user_type !== 'Intelligence' && user_type !== 'airForce' ) {
     return res.status(403).json({ message: 'Access denied: destroyed permission required' })
     }
     next()
