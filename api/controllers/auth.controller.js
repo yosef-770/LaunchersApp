@@ -15,6 +15,7 @@ async function login(req, res, next) {
     try {
         const {username, password} = req.body
         const result = await authService.login(username, password)
+        if (!result) return res.status(401).json({error: 'Incorrect login details or system temporarily unavailable'})
         res.json(result)
     } catch(err) {
         next(err)
@@ -36,6 +37,7 @@ async function updateUser(req, res, next) {
     try {
         const user = await authService.updateUser(req.params.id, req.body)
         if (!user) return res.status(404).json({error: 'not fond'})
+        return res.json(user)
     } catch (err) {
         next(err)
     }
