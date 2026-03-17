@@ -8,9 +8,9 @@ authRouter.post('/login', authController.login)
 authRouter.get('/getUser', authenticateJWT, authController.getUser)
 
 authRouter.get('/getAllusers', authenticateJWT, adminPermission, authController.getAllUsers)
-authRouter.post('/register/create', authenticateJWT, adminPermission, authController.getAllUsers)
+authRouter.post('/register/create', authenticateJWT, adminPermission, authController.register)
 
-authRouter.put('/register/update', authenticateJWT, adminPermission, authController.updateUser)
+authRouter.put('/register/update/:id', authenticateJWT, adminPermission, authController.updateUser)
 authRouter.delete('/register/delete/:id', authenticateJWT, adminPermission, authController.deleteUser)
 
 export default authRouter
