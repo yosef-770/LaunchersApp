@@ -21,6 +21,18 @@
   text-decoration: underline;
 }
 
+.navBtn {
+  padding: 0.25rem 0.5rem;
+  border: 1px solid #333;
+  background: #fff;
+  font-size: 1rem;
+
+}
+
+.navBtn:hover {
+  background: #f0f0f0;
+}
+
 .main {
   padding: 1rem;
   max-width: 600px;
