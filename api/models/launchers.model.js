@@ -6,6 +6,7 @@ const launchersSchema = new mongoose.Schema({
     rocketType: {type: String, enum:['Shahab3', 'Fetah110', 'Radwan', 'Kheibar']},
     latitude: {type: Number},
     longitude:{type: Number},
+    destroyed: {type: Boolean, default: false}
     },
     {timestamps: true}
 );

@@ -4,6 +4,7 @@ async function getAllLauncher(filters = {}) {
     const q = {}
     if (filters.city) q.city = filters.city
     if (filters.rocketType) q.rocketType = filters.rocketType
+    if (filters.destroyed !== undefined) q.destroyed = filters.destroyed === 'true'
     return Launcher.find(q).lean()
 }
 
@@ -33,5 +34,13 @@ async function deleteLauncher(id) {
     
 }
 
+async function destroyedLauncher(id, destroyed) {
+    const launcher = await Launcher.findByIdAndUpdate(id,
+        {destroyed},
+        {new: true}
+    ).lean()
 
-export {getAllLauncher, getLauncherByID, craeteLauncher, updateLauncher, deleteLauncher }
+    return launcher;
+}
+
+export {getAllLauncher, getLauncherByID, craeteLauncher, updateLauncher, deleteLauncher, destroyedLauncher }
