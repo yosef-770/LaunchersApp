@@ -30,7 +30,7 @@ async function register (user) {
 
 
 async function login(username, password) {
-    const user = User.findOne({username})
+    const user = await User.findOne({username})
     if (!user) return null
     const validPassword = await bcrypt.compare(password, user.password)
     if (!validPassword) return null
@@ -67,16 +67,23 @@ async function updateUser(id, objUser) {
     const user = await User.findById(id)
     if (!user) return null
     if(objUser.password){
-        objUser.password = await bcrypt.hash(user.password, 10)
+        objUser.password = await bcrypt.hash(objUser.password, 10)
     }
 
     const update = await User.findByIdAndUpdate(
         id,
-        {$set: objUser},
-        {new: trur}
+        {$set: objUser },
+        {new: true }
     ).lean()
 
     return update
 }
 
-export {register, login, getUserByid, deleteUser, updateUser}
+
+async function getAllUsers() {
+    const users = await User.find().lean()
+    return users
+    
+}
+
+export {register, login, getUserByid, deleteUser, updateUser, getAllUsers}

@@ -1,6 +1,6 @@
 import express from 'express'
 import * as launchersController from '../controllers/launchers.controller.js'
-import { authenticateJWT, adminPermission, writePermission, destroyedPermission } from '../middleware/auth'
+import { authenticateJWT, adminPermission, writePermission, destroyedPermission } from '../middleware/auth.js'
 
 const aunchersRouter = express.Router()
 
